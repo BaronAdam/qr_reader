@@ -180,7 +180,7 @@ class _MainScreenState extends State<MainScreen> {
       print('Exception while scanning code: $e');
     }
 
-    if (barcodeScanResult == '-1') barcodeScanResult = '';
+    if (barcodeScanResult == null) barcodeScanResult = '';
 
     setState(() {
       _barcodeScanResult = barcodeScanResult;

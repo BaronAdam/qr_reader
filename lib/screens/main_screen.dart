@@ -27,7 +27,12 @@ class _MainScreenState extends State<MainScreen> {
         backgroundColor: Colors.white,
         actions: [
           IconTextButton(
-            onPressed: _scanCode,
+            onPressed: () async {
+              String barcodeScanResult = await scanCode();
+              setState(() {
+                _barcodeScanResult = barcodeScanResult;
+              });
+            },
             text: 'Scan',
             icon: Icon(
               Icons.camera_alt,
@@ -97,7 +102,12 @@ class _MainScreenState extends State<MainScreen> {
               Padding(
                   padding: const EdgeInsets.all(8.0),
                   child: IconTextButton(
-                    onPressed: _scanCode,
+                    onPressed: () async {
+                      String barcodeScanResult = await scanCode();
+                      setState(() {
+                        _barcodeScanResult = barcodeScanResult;
+                      });
+                    },
                     text: 'Scan QR code',
                     icon: Icon(
                       Icons.camera_alt,
@@ -127,14 +137,13 @@ class _MainScreenState extends State<MainScreen> {
 
   String _barcodeScanResult = '';
 
-  Future<void> _scanCode() async {
+  @visibleForTesting
+  Future<String> scanCode() async {
     String barcodeScanResult = await scannerService.scan(context);
 
     if (barcodeScanResult == null) barcodeScanResult = '';
 
-    setState(() {
-      _barcodeScanResult = barcodeScanResult;
-    });
+    return barcodeScanResult;
   }
 
   void _copyToClipboard() {

@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-class FormattedText extends StatelessWidget {
+class FormattedText extends StatefulWidget {
   final String text;
   final double fontSize;
 
@@ -11,12 +11,17 @@ class FormattedText extends StatelessWidget {
   }) : super(key: key);
 
   @override
+  _FormattedTextState createState() => _FormattedTextState();
+}
+
+class _FormattedTextState extends State<FormattedText> {
+  @override
   Widget build(BuildContext context) {
     return Text(
-      text,
+      widget.text,
       style: TextStyle(
         color: Colors.black,
-        fontSize: fontSize,
+        fontSize: widget.fontSize,
         fontWeight: FontWeight.bold,
       ),
     );

@@ -2,6 +2,7 @@ import 'package:barras/barras.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_styled_toast/flutter_styled_toast.dart';
+import 'package:qr_reader/widgets/formatted_text.dart';
 import 'package:qr_reader/widgets/icon_text_button.dart';
 import 'package:url_launcher/url_launcher.dart';
 import 'package:validated/validated.dart' as validate;
@@ -45,19 +46,15 @@ class _MainScreenState extends State<MainScreen> {
                         children: [
                           Padding(
                             padding: const EdgeInsets.all(16.0),
-                            child: Text(
-                              'Scan Result:',
-                              style: TextStyle(
-                                color: Colors.black,
-                                fontSize: 25,
-                                fontWeight: FontWeight.bold,
-                              ),
+                            child: FormattedText(
+                              text: 'Scan Result:',
+                              fontSize: 25,
                             ),
                           ),
                           Spacer(),
                           IconTextButton(
                             onPressed: _copyToClipboard,
-                            text: 'copy',
+                            text: 'Copy',
                             icon: Icon(
                               Icons.copy,
                               color: Colors.black,
@@ -81,12 +78,9 @@ class _MainScreenState extends State<MainScreen> {
                           Flexible(
                             child: Padding(
                               padding: const EdgeInsets.all(10.0),
-                              child: Text(
-                                _barcodeScanResult,
-                                style: TextStyle(
-                                  color: Colors.black,
-                                  fontSize: 20,
-                                ),
+                              child: FormattedText(
+                                text: _barcodeScanResult,
+                                fontSize: 20,
                               ),
                             ),
                           ),

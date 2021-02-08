@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:qr_reader/widgets/formatted_text.dart';
 
 class IconTextButton extends StatelessWidget {
   final onPressed;
@@ -25,10 +26,10 @@ class IconTextButton extends StatelessWidget {
           SizedBox(
             width: 10,
           ),
-          Text(
-            text,
-            style: TextStyle(color: Colors.black, fontSize: 20),
-          )
+          FormattedText(
+            text: text,
+            fontSize: 20,
+          ),
         ],
       ),
     );

@@ -6,6 +6,7 @@ class IconTextButton extends StatefulWidget {
   final String text;
   final Icon icon;
   final double minWidth;
+  final bool isCentered;
 
   const IconTextButton({
     Key key,
@@ -13,6 +14,7 @@ class IconTextButton extends StatefulWidget {
     @required this.text,
     @required this.icon,
     this.minWidth = 0,
+    this.isCentered = false,
   }) : super(key: key);
 
   @override
@@ -36,6 +38,9 @@ class _IconTextButtonState extends State<IconTextButton> {
             fontSize: 20,
           ),
         ],
+        mainAxisAlignment: widget.isCentered
+            ? MainAxisAlignment.center
+            : MainAxisAlignment.start,
       ),
     );
   }

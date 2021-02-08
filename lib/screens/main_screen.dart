@@ -101,6 +101,7 @@ class _MainScreenState extends State<MainScreen> {
                       color: Colors.black,
                     ),
                     minWidth: double.infinity,
+                    isCentered: true,
                   )),
           ],
           mainAxisAlignment: MainAxisAlignment.start,

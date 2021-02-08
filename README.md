@@ -12,3 +12,5 @@ flutter_styled_toast: ^1.5.0+1
 validated: ^1.0.3
 url_launcher: ^5.7.10
 ```
+## Other
+App icon generated with [Android Asset Studio](https://romannurik.github.io/AndroidAssetStudio/index.html).

@@ -1,7 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:qr_reader/screens/main_screen.dart';
 
+import 'injection.dart';
+
 void main() {
+  configureDependencies();
   runApp(QrReader());
 }
 

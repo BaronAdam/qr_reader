@@ -1,3 +1,4 @@
+import 'package:adaptive_theme/adaptive_theme.dart';
 import 'package:barras/barras.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
@@ -19,16 +20,19 @@ class _MainScreenState extends State<MainScreen> {
       appBar: AppBar(
         title: Text(
           'QR Reader',
-          style: TextStyle(color: Colors.black),
         ),
-        backgroundColor: Colors.white,
         actions: [
+          IconButton(
+            icon: Icon(Icons.wb_incandescent),
+            onPressed: () {
+              AdaptiveTheme.of(context).toggleThemeMode();
+            },
+          ),
           IconTextButton(
             onPressed: _scanCode,
             text: 'Scan',
             icon: Icon(
-              Icons.camera_alt,
-              color: Colors.black,
+              Icons.qr_code_scanner,
             ),
           )
         ],
@@ -38,7 +42,7 @@ class _MainScreenState extends State<MainScreen> {
           children: [
             if (_barcodeScanResult != '')
               Padding(
-                padding: const EdgeInsets.all(8.0),
+                padding: const EdgeInsets.all(12.0),
                 child: Card(
                   child: Column(
                     children: [
@@ -57,7 +61,6 @@ class _MainScreenState extends State<MainScreen> {
                             text: 'Copy',
                             icon: Icon(
                               Icons.copy,
-                              color: Colors.black,
                             ),
                           ),
                           if (validate.isURL(_barcodeScanResult))
@@ -66,7 +69,6 @@ class _MainScreenState extends State<MainScreen> {
                               text: 'Open',
                               icon: Icon(
                                 Icons.open_in_browser,
-                                color: Colors.black,
                               ),
                             )
                           else
@@ -97,8 +99,7 @@ class _MainScreenState extends State<MainScreen> {
                     onPressed: _scanCode,
                     text: 'Scan QR code',
                     icon: Icon(
-                      Icons.camera_alt,
-                      color: Colors.black,
+                      Icons.qr_code_scanner,
                     ),
                     minWidth: double.infinity,
                     isCentered: true,
@@ -148,9 +149,11 @@ class _MainScreenState extends State<MainScreen> {
       context: context,
       textStyle: TextStyle(
         fontSize: 21,
-        color: Colors.black,
+        color:
+            AdaptiveTheme.of(context).isDefault ? Colors.white : Colors.black,
       ),
-      backgroundColor: Colors.black12,
+      backgroundColor:
+          AdaptiveTheme.of(context).isDefault ? Colors.black54 : Colors.white,
       borderRadius: BorderRadius.circular(20),
     );
   }

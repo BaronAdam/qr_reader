@@ -20,7 +20,6 @@ class _FormattedTextState extends State<FormattedText> {
     return Text(
       widget.text,
       style: TextStyle(
-        color: Colors.black,
         fontSize: widget.fontSize,
         fontWeight: FontWeight.bold,
       ),

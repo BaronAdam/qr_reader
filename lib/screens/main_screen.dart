@@ -2,6 +2,8 @@ import 'package:barras/barras.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_styled_toast/flutter_styled_toast.dart';
+import 'package:qr_reader/widgets/formatted_text.dart';
+import 'package:qr_reader/widgets/icon_text_button.dart';
 import 'package:url_launcher/url_launcher.dart';
 import 'package:validated/validated.dart' as validate;
 
@@ -21,22 +23,12 @@ class _MainScreenState extends State<MainScreen> {
         ),
         backgroundColor: Colors.white,
         actions: [
-          FlatButton(
+          IconTextButton(
             onPressed: _scanCode,
-            child: Row(
-              children: [
-                Icon(
-                  Icons.camera_alt,
-                  color: Colors.black,
-                ),
-                SizedBox(
-                  width: 10,
-                ),
-                Text(
-                  'Scan',
-                  style: TextStyle(color: Colors.black, fontSize: 20),
-                )
-              ],
+            text: 'Scan',
+            icon: Icon(
+              Icons.camera_alt,
+              color: Colors.black,
             ),
           )
         ],
@@ -54,53 +46,27 @@ class _MainScreenState extends State<MainScreen> {
                         children: [
                           Padding(
                             padding: const EdgeInsets.all(16.0),
-                            child: Text(
-                              'Scan Result:',
-                              style: TextStyle(
-                                color: Colors.black,
-                                fontSize: 25,
-                                fontWeight: FontWeight.bold,
-                              ),
+                            child: FormattedText(
+                              text: 'Scan Result:',
+                              fontSize: 25,
                             ),
                           ),
                           Spacer(),
-                          FlatButton(
+                          IconTextButton(
                             onPressed: _copyToClipboard,
-                            child: Row(
-                              children: [
-                                Icon(
-                                  Icons.copy,
-                                  color: Colors.black,
-                                ),
-                                SizedBox(
-                                  width: 10,
-                                ),
-                                Text(
-                                  'Copy',
-                                  style: TextStyle(
-                                      color: Colors.black, fontSize: 20),
-                                ),
-                              ],
+                            text: 'Copy',
+                            icon: Icon(
+                              Icons.copy,
+                              color: Colors.black,
                             ),
                           ),
                           if (validate.isURL(_barcodeScanResult))
-                            FlatButton(
+                            IconTextButton(
                               onPressed: _launchURL,
-                              child: Row(
-                                children: [
-                                  Icon(
-                                    Icons.open_in_browser,
-                                    color: Colors.black,
-                                  ),
-                                  SizedBox(
-                                    width: 10,
-                                  ),
-                                  Text(
-                                    'Open',
-                                    style: TextStyle(
-                                        color: Colors.black, fontSize: 20),
-                                  ),
-                                ],
+                              text: 'Open',
+                              icon: Icon(
+                                Icons.open_in_browser,
+                                color: Colors.black,
                               ),
                             )
                           else
@@ -112,12 +78,9 @@ class _MainScreenState extends State<MainScreen> {
                           Flexible(
                             child: Padding(
                               padding: const EdgeInsets.all(10.0),
-                              child: Text(
-                                _barcodeScanResult,
-                                style: TextStyle(
-                                  color: Colors.black,
-                                  fontSize: 20,
-                                ),
+                              child: FormattedText(
+                                text: _barcodeScanResult,
+                                fontSize: 20,
                               ),
                             ),
                           ),
@@ -129,28 +92,17 @@ class _MainScreenState extends State<MainScreen> {
               )
             else
               Padding(
-                padding: const EdgeInsets.all(8.0),
-                child: FlatButton(
-                  minWidth: double.infinity,
-                  onPressed: _scanCode,
-                  child: Row(
-                    children: [
-                      Icon(
-                        Icons.camera_alt,
-                        color: Colors.black,
-                      ),
-                      SizedBox(
-                        width: 10,
-                      ),
-                      Text(
-                        'Scan QR Code',
-                        style: TextStyle(color: Colors.black, fontSize: 20),
-                      )
-                    ],
-                    mainAxisAlignment: MainAxisAlignment.center,
-                  ),
-                ),
-              ),
+                  padding: const EdgeInsets.all(8.0),
+                  child: IconTextButton(
+                    onPressed: _scanCode,
+                    text: 'Scan QR code',
+                    icon: Icon(
+                      Icons.camera_alt,
+                      color: Colors.black,
+                    ),
+                    minWidth: double.infinity,
+                    isCentered: true,
+                  )),
           ],
           mainAxisAlignment: MainAxisAlignment.start,
           crossAxisAlignment: CrossAxisAlignment.center,

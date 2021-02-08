@@ -1,7 +1,8 @@
-import 'package:barras/barras.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_styled_toast/flutter_styled_toast.dart';
+import 'package:qr_reader/injection.dart';
+import 'package:qr_reader/interfaces/i_scanner_service.dart';
 import 'package:qr_reader/widgets/formatted_text.dart';
 import 'package:qr_reader/widgets/icon_text_button.dart';
 import 'package:url_launcher/url_launcher.dart';
@@ -13,8 +14,10 @@ class MainScreen extends StatefulWidget {
 }
 
 class _MainScreenState extends State<MainScreen> {
+  IScannerService scannerService;
   @override
   Widget build(BuildContext context) {
+    scannerService = getIt<IScannerService>();
     return Scaffold(
       appBar: AppBar(
         title: Text(
@@ -125,12 +128,7 @@ class _MainScreenState extends State<MainScreen> {
   String _barcodeScanResult = '';
 
   Future<void> _scanCode() async {
-    String barcodeScanResult = '';
-    try {
-      barcodeScanResult = await Barras.scan(context);
-    } on Exception catch (e) {
-      print('Exception while scanning code: $e');
-    }
+    String barcodeScanResult = await scannerService.scan(context);
 
     if (barcodeScanResult == null) barcodeScanResult = '';
 

@@ -1,6 +1,7 @@
 # qr_reader
 ![Flutter](https://github.com/BaronAdam/qr_reader/workflows/Flutter/badge.svg)  
-A simple and free QR Reader written in Flutter SDK. [Go to releases](https://github.com/BaronAdam/qr_reader/releases).
+A simple and free QR Reader written in Flutter SDK. [Go to releases](https://github.com/BaronAdam/qr_reader/releases) or 
+[download newest version](https://github.com/BaronAdam/qr_reader/releases/download/0.2.0/qr-scanner.apk).
  
 ## Design
 <img src="https://imgur.com/i2v96gh.jpg" width=25% align=left>

@@ -24,7 +24,7 @@ class _MainScreenState extends State<MainScreen> {
         backgroundColor: Colors.white,
         actions: [
           IconTextButton(
-            onPressed: _scanCode(),
+            onPressed: _scanCode,
             text: 'Scan',
             icon: Icon(
               Icons.camera_alt,
@@ -94,7 +94,7 @@ class _MainScreenState extends State<MainScreen> {
               Padding(
                   padding: const EdgeInsets.all(8.0),
                   child: IconTextButton(
-                    onPressed: _scanCode(),
+                    onPressed: _scanCode,
                     text: 'Scan QR code',
                     icon: Icon(
                       Icons.camera_alt,
